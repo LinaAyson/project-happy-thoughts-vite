@@ -6,7 +6,7 @@ export default function PostContainer() {
   const [thought, setThought] = useState('');
   const handlePost = async () => {
     const postData = {
-      message: thought, // Replace 'thought' with the actual data you want to post
+      message: thought, 
     };
 
     try {
@@ -21,8 +21,14 @@ export default function PostContainer() {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      // If you want to handle the response from the server, you can do it here
-      // For example, you can retrieve the newly created thought from the response.
+
+      const updatedData = data.map((thought) => {
+        if (thought._id === thoughtId) {
+          thought.hearts += 1;
+        }
+        return thought;
+      });
+
 
       // Clear the input field after a successful POST
       setThought('');
@@ -33,9 +39,6 @@ export default function PostContainer() {
     }
   };
 
-  
- 
-
   return (
     <div className="container-question">   
         <h2>What is making you happy right now?</h2>
@@ -43,7 +46,7 @@ export default function PostContainer() {
       <textarea
         style={{ resize: 'none' }} 
         rows={3}
-        placeholder="Ollie the best dog ever!"
+        placeholder="'Ollie the best dog ever!'"
         value={thought}
         onChange={(e) => setThought(e.target.value)}
       />
