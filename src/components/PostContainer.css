@@ -4,6 +4,7 @@
   padding: 1rem;
   box-shadow: var(--box-shadow);
   -webkit-box-shadow: var(--box-shadow);
+  width: 90%;
 }
 
 textarea {

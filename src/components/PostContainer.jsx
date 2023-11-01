@@ -1,20 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./PostContainer.css";
-import ButtonSubmit from "./ButtonSubmit";
+import "./ButtonSubmit.css";
 
 export default function PostContainer() {
-  return (
-    <div className="container-question">
-      <h2>What is making you happy right now?</h2>
-      <form>
-        <textarea rows={3} placeholder="'Ollie the best dog ever'"></textarea>
-      </form>
-      <div className="container-error">
-        {/* <p className="error">Too short</p> */}
-        <p className="length">1/140</p>
-      </div>
+  const [thought, setThought] = useState('');
+  const handlePost = async () => {
+    const postData = {
+      message: thought, // Replace 'thought' with the actual data you want to post
+    };
 
-      <ButtonSubmit />
+    try {
+      const response = await fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // If you want to handle the response from the server, you can do it here
+      // For example, you can retrieve the newly created thought from the response.
+
+      // Clear the input field after a successful POST
+      setThought('');
+      // Reload the page after clicking on the button
+      window.location.reload();
+    } catch (error) {
+      console.error('Error posting data:', error);
+    }
+  };
+
+  
+ 
+
+  return (
+    <div className="container-question">   
+        <h2>What is making you happy right now?</h2>
+    <form>
+      <textarea
+        style={{ resize: 'none' }} 
+        rows={3}
+        placeholder="Ollie the best dog ever!"
+        value={thought}
+        onChange={(e) => setThought(e.target.value)}
+      />
+    </form>
+    <div className="container-error">
+      <p className="length">{thought.length}/140</p>
     </div>
+    <button className="submitPost" onClick={handlePost}>
+      <span class="emoji" aria-label="heart emoji">
+        ❤️
+      </span>
+      Send Happy Thought
+      <span class="emoji" aria-label="heart emoji">
+        ❤️
+      </span></button>
+  </div>
   );
 }
+// API POST
