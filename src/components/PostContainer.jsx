@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./PostContainer.css";
 import "./ButtonSubmit.css";
 
-export default function PostContainer() {
+export default function PostContainer({data}) {
   const [thought, setThought] = useState('');
+
+
   const handlePost = async () => {
     const postData = {
       message: thought, 
@@ -22,14 +24,6 @@ export default function PostContainer() {
         throw new Error('Network response was not ok');
       }
 
-      const updatedData = data.map((thought) => {
-        if (thought._id === thoughtId) {
-          thought.hearts += 1;
-        }
-        return thought;
-      });
-
-
       // Clear the input field after a successful POST
       setThought('');
       // Reload the page after clicking on the button
@@ -46,7 +40,7 @@ export default function PostContainer() {
       <textarea
         style={{ resize: 'none' }} 
         rows={3}
-        placeholder="'Ollie the best dog ever!'"
+        placeholder="'Ollie!'"
         value={thought}
         onChange={(e) => setThought(e.target.value)}
       />

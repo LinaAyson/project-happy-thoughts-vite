@@ -1,33 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import ListContainer from './ListContainer'; // Import your ListContainer component
-import './ListContainer.css';
+// import React, { useState, useEffect } from 'react';
+// import ListContainer from './ListContainer'; 
+// import './ListContainer.css';
 
-export default function MainComponent() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+// export default function MainComponent() {
 
 
-  return (
-    <div>
-      {data.map((thought, index) => (
-        <ListContainer key={index} message={thought.message} />
-      ))}
-    </div>
-  );
-}
+//   // useEffect(() => {
+//   //   const fetchData = async () => {
+//   //     try {
+//   //       const response = await fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts');
+//   //       if (!response.ok) {
+//   //         throw new Error('Network response was not ok');
+//   //       }
+//   //       const jsonData = await response.json();
+//   //       setData(jsonData);
+//   //     } catch (error) {
+//   //       console.error('Error fetching data:', error);
+//   //     }
+//   //   };
+
+//   //   fetchData();
+//   // }, []);
+
+
+//   return (
+//     <div>
+//       {data.map((thought, index) => (
+//         <ListContainer key={index} message={thought.message} />
+//       ))}
+//     </div>
+//   );
+// }
