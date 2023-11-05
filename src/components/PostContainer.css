@@ -1,10 +1,9 @@
 .container-question {
   background-color: #ebebeb;
   border: 1px solid black;
-  padding: 1rem;
+  padding: 5px 35px 15px 35px;
   box-shadow: var(--box-shadow);
-  -webkit-box-shadow: var(--box-shadow);
-  width: 90%;
+  width: 70%;
 }
 
 textarea {
@@ -13,4 +12,10 @@ textarea {
   margin: 10px 0 2px;
   background: white;
   text-align: center;
+}
+.container-error {
+  display: flex;
+  justify-content: flex-end;
+  color: gray;
+  min-width: 50px;
 }

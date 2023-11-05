@@ -15,7 +15,6 @@
   flex-direction: column;
   padding: 20px;
   box-shadow: var(--box-shadow);
-  -webkit-box-shadow: var(--box-shadow);
 }
 
 .container-info {
@@ -33,6 +32,9 @@
   cursor: pointer;
   animation: pulse-small 2s infinite;
 }
+.like-button:hover {
+  background-color: #ffb7d2;
+}
 
 .count-likes {
   margin-left: 5px;
@@ -40,3 +42,4 @@
 .container-time {
   color: #696969;
 }
+
