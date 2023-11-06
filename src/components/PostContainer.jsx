@@ -40,7 +40,7 @@ export default function PostContainer({data}) {
       <textarea
         style={{ resize: 'none' }} 
         rows={3}
-        placeholder="'Ollie!'"
+        placeholder="'If music be the food of love, play on. - William Shakespeare'"
         value={thought}
         onChange={(e) => setThought(e.target.value)}
       />
